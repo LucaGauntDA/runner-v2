@@ -1,3 +1,4 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -41,11 +42,12 @@ const StarField: React.FC = () => {
   useFrame((state, delta) => {
     if (!meshRef.current) return;
     
-    const positions = meshRef.current.geometry.attributes.position.array as Float32Array;
+    const positionsAttr = meshRef.current.geometry.attributes.position;
+    const array = positionsAttr.array as Float32Array;
     const activeSpeed = speed > 0 ? speed : 2; // Always move slightly even when stopped
 
     for (let i = 0; i < count; i++) {
-        let z = positions[i * 3 + 2];
+        let z = array[i * 3 + 2];
         z += activeSpeed * delta * 2.0; // Parallax effect
         
         // Reset when it passes the camera (z > 100 gives plenty of buffer behind camera)
@@ -62,12 +64,12 @@ const StarField: React.FC = () => {
                 else x += 15;
             }
 
-            positions[i * 3] = x;
-            positions[i * 3 + 1] = y;
+            array[i * 3] = x;
+            array[i * 3 + 1] = y;
         }
-        positions[i * 3 + 2] = z;
+        array[i * 3 + 2] = z;
     }
-    meshRef.current.geometry.attributes.position.needsUpdate = true;
+    positionsAttr.needsUpdate = true;
   });
 
   return (
@@ -75,9 +77,7 @@ const StarField: React.FC = () => {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={count}
-          array={positions}
-          itemSize={3}
+          args={[positions, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
