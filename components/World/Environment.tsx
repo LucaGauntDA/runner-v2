@@ -7,7 +7,7 @@
 
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import * as THREE from 'this';
 import { useStore } from '../../store';
 import { LANE_WIDTH } from '../../types';
 
@@ -150,7 +150,6 @@ const RetroSun: React.FC = () => {
 
     return (
         <group ref={sunGroupRef} position={[0, 30, -180]}>
-            {/* Reduced Geometry for Mobile: 32 segments instead of 64 */}
             <mesh>
                 <sphereGeometry args={[35, 32, 32]} />
                 <shaderMaterial
@@ -178,7 +177,6 @@ const RetroSun: React.FC = () => {
                             // 2. Synthwave Scanlines
                             float stripeFreq = 40.0;
                             float stripeSpeed = 1.0;
-                            // Simple scanline logic without heavy rim lighting
                             float stripes = sin((vUv.y * stripeFreq) - (uTime * stripeSpeed));
                             
                             // Create sharp bands

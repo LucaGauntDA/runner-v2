@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 
+
 import React, { Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
@@ -38,7 +39,7 @@ const CameraController = () => {
     const targetPos = new THREE.Vector3(0, targetY, targetZ);
     
     // Smoothly interpolate camera position
-    camera.position.lerp(targetPos, Math.min(delta * 3.0, 0.1));
+    camera.position.lerp(targetPos, delta * 3.0);
     
     // Look further down the track to maintain visibility of oncoming obstacles
     camera.lookAt(0, 0, -35); 
@@ -68,7 +69,7 @@ function App() {
       <HUD />
       <Canvas
         shadows
-        dpr={[1, 2]} 
+        dpr={[1, 2]} // Higher fidelity for high-res tablets/monitors
         gl={{ antialias: false, stencil: false, depth: true, powerPreference: "high-performance" }}
         camera={{ position: [0, 6, 10], fov: 60 }}
       >

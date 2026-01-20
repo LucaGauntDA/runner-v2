@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 
-
 import React from 'react';
 import { EffectComposer, Bloom, Vignette, Noise } from '@react-three/postprocessing';
 import { BlendFunction } from 'postprocessing';

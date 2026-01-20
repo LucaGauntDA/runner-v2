@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 
+
 import React, { useState, useEffect } from 'react';
 import { Heart, Zap, Trophy, MapPin, Diamond, Rocket, ArrowUpCircle, Shield, Activity, PlusCircle, Play } from 'lucide-react';
 import { useStore } from '../../store';
@@ -116,7 +117,6 @@ export const HUD: React.FC = () => {
           <div className="absolute inset-0 flex items-center justify-center z-[100] bg-black/80 backdrop-blur-md p-6 pointer-events-auto">
               <div className="relative w-full max-w-xl rounded-[2.5rem] overflow-hidden shadow-[0_0_70px_rgba(0,255,255,0.25)] border border-white/10 animate-in zoom-in-95 duration-500">
                 <div className="relative w-full bg-slate-950 overflow-hidden">
-                     {/* Dynamic Logo Replacement for Gemini Image */}
                      <div className="relative w-full aspect-video lg:aspect-[16/10] bg-[#050011] flex flex-col items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#8800ff_1px,transparent_1px),linear-gradient(to_bottom,#8800ff_1px,transparent_1px)] bg-[size:50px_50px] [transform:perspective(500px)_rotateX(60deg)]"></div>
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050011]"></div>
@@ -158,7 +158,7 @@ export const HUD: React.FC = () => {
       return (
           <div className="absolute inset-0 bg-black/95 z-[100] text-white pointer-events-auto backdrop-blur-md overflow-y-auto">
               <div className="flex flex-col items-center justify-center min-h-full py-12 px-6">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-10 drop-shadow-[0_0_20px_rgba(255,0,0,0.8)] font-cyber text-center uppercase tracking-widest">GAME OVER</h1>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-10 drop-shadow-[0_0_20px_rgba(255,0,0,0.8)] font-cyber text-center uppercase tracking-widest animate-pulse">GAME OVER</h1>
                 <div className="grid grid-cols-1 gap-4 lg:gap-6 text-center mb-12 w-full max-w-2xl">
                     <div className="bg-gray-900/60 p-5 lg:p-6 rounded-2xl border border-gray-700 flex items-center justify-between group hover:border-yellow-500 transition-colors">
                         <div className="flex items-center text-yellow-400 text-lg lg:text-xl font-mono uppercase tracking-wider"><Trophy className="mr-3 w-6 h-6"/> LEVEL REACHED</div>

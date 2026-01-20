@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 
+
 import React, { useRef, useEffect, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
@@ -117,8 +118,6 @@ export const Player: React.FC = () => {
       } else if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
           e.preventDefault(); // Prevent page scroll
           triggerJump();
-      } else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
-          e.preventDefault();
       } else if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
           activateImmortality();
@@ -171,7 +170,7 @@ export const Player: React.FC = () => {
     groupRef.current.position.x = THREE.MathUtils.lerp(
         groupRef.current.position.x, 
         targetX.current, 
-        Math.min(safeDelta * 18, 0.9)
+        safeDelta * 18 
     );
 
     // 2. Physics (Jump)
