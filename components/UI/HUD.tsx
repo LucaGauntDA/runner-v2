@@ -120,11 +120,11 @@ export const HUD: React.FC = () => {
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050011]"></div>
                         
                         <div className="relative z-10 flex flex-col items-center group cursor-default">
-                            <div className="text-7xl md:text-8xl lg:text-9xl font-black italic tracking-tighter text-white font-cyber select-none flex items-center transition-transform group-hover:scale-105 duration-500">
+                            <div className="text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter text-white font-cyber select-none flex items-center transition-transform group-hover:scale-105 duration-500">
                                 <span className="drop-shadow-[0_0_20px_rgba(0,255,255,0.8)]">RUN</span>
                                 <span className="text-cyan-400 drop-shadow-[0_0_20px_rgba(0,255,255,0.8)]">NER</span>
                             </div>
-                            <div className="mt-[-15px] lg:mt-[-25px] bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-1.5 lg:px-8 lg:py-2 rounded-sm skew-x-[-12deg] font-black text-2xl lg:text-3xl shadow-[0_0_20px_rgba(255,0,119,0.5)] border border-white/20">
+                            <div className="mt-[-10px] lg:mt-[-20px] bg-gradient-to-r from-purple-600 to-pink-600 text-white px-5 py-1.5 lg:px-7 lg:py-2 rounded-sm skew-x-[-12deg] font-black text-xl lg:text-2xl shadow-[0_0_20px_rgba(255,0,119,0.5)] border border-white/20">
                                 V2
                             </div>
                         </div>
