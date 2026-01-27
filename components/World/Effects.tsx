@@ -11,7 +11,6 @@ import { BlendFunction } from 'postprocessing';
 export const Effects = () => {
   return (
     <EffectComposer disableNormalPass multisampling={0}>
-      {/* Tighter bloom to avoid fog: High threshold, moderate radius */}
       <Bloom 
         luminanceThreshold={0.75} 
         mipmapBlur 

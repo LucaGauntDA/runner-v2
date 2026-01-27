@@ -1,9 +1,7 @@
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
 */
-
 
 import React, { useState, useEffect } from 'react';
 import { Heart, Zap, Trophy, MapPin, Diamond, Rocket, ArrowUpCircle, Shield, Activity, PlusCircle, Play } from 'lucide-react';
@@ -37,7 +35,7 @@ const SHOP_ITEMS: ShopItem[] = [
     {
         id: 'IMMORTAL',
         name: 'IMMORTALITY',
-        description: 'Unlock Ability: Press Space/Tap to be invincible for 5s.',
+        description: 'Unlock Ability: Press Shift/Enter to be invincible for 5s.',
         cost: 3000,
         icon: Shield,
         oneTime: true
@@ -145,7 +143,7 @@ export const HUD: React.FC = () => {
                             </span>
                         </button>
                         <p className="text-cyan-400/50 text-xs lg:text-sm font-mono mt-5 tracking-[0.2em] uppercase">
-                            [ ARROWS / WASD / SWIPE ]
+                            [ SPACE / ARROWS / WASD / SWIPE ]
                         </p>
                      </div>
                 </div>

@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 
-
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
@@ -13,20 +12,16 @@ import { LANE_WIDTH } from '../../types';
 
 const StarField: React.FC = () => {
   const speed = useStore(state => state.speed);
-  const count = 3000; // Increased star count for better density
+  const count = 3000; 
   const meshRef = useRef<THREE.Points>(null);
   
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       let x = (Math.random() - 0.5) * 400;
-      let y = (Math.random() - 0.5) * 200 + 50; // Keep mostly above horizon
-      
-      // Distribute Z randomly along the entire travel path plus buffer
-      // Range: -550 to 100 to ensure full coverage from start
+      let y = (Math.random() - 0.5) * 200 + 50; 
       let z = -550 + Math.random() * 650;
 
-      // Exclude stars from the central play area
       if (Math.abs(x) < 15 && y > -5 && y < 20) {
           if (x < 0) x -= 15;
           else x += 15;
@@ -44,18 +39,14 @@ const StarField: React.FC = () => {
     
     const positionsAttr = meshRef.current.geometry.attributes.position;
     const array = positionsAttr.array as Float32Array;
-    const activeSpeed = speed > 0 ? speed : 2; // Always move slightly even when stopped
+    const activeSpeed = speed > 0 ? speed : 2; 
 
     for (let i = 0; i < count; i++) {
         let z = array[i * 3 + 2];
-        z += activeSpeed * delta * 2.0; // Parallax effect
+        z += activeSpeed * delta * 2.0; 
         
-        // Reset when it passes the camera (z > 100 gives plenty of buffer behind camera)
         if (z > 100) {
-            // Reset far back with a random buffer to prevent "walls" of stars
             z = -550 - Math.random() * 50; 
-            
-            // Re-randomize X/Y on respawn with exclusion logic
             let x = (Math.random() - 0.5) * 400;
             let y = (Math.random() - 0.5) * 200 + 50;
             
@@ -106,13 +97,11 @@ const LaneGuides: React.FC = () => {
 
     return (
         <group position={[0, 0.02, 0]}>
-            {/* Lane Floor - Lowered slightly to -0.02 */}
             <mesh position={[0, -0.02, -20]} rotation={[-Math.PI / 2, 0, 0]}>
                 <planeGeometry args={[laneCount * LANE_WIDTH, 200]} />
                 <meshBasicMaterial color="#1a0b2e" transparent opacity={0.9} />
             </mesh>
 
-            {/* Lane Separators - Glowing Lines */}
             {separators.map((x, i) => (
                 <mesh key={`sep-${i}`} position={[x, 0, -20]} rotation={[-Math.PI / 2, 0, 0]}>
                     <planeGeometry args={[0.05, 200]} /> 
@@ -135,7 +124,6 @@ const RetroSun: React.FC = () => {
         if (matRef.current) {
             matRef.current.uniforms.uTime.value = state.clock.elapsedTime;
         }
-        // Gentle bobbing
         if (sunGroupRef.current) {
             sunGroupRef.current.position.y = 30 + Math.sin(state.clock.elapsedTime * 0.2) * 1.0;
             sunGroupRef.current.rotation.y = state.clock.elapsedTime * 0.05;
@@ -144,8 +132,8 @@ const RetroSun: React.FC = () => {
 
     const uniforms = useMemo(() => ({
         uTime: { value: 0 },
-        uColorTop: { value: new THREE.Color('#ffe600') }, // Bright Yellow
-        uColorBottom: { value: new THREE.Color('#ff0077') } // Magenta/Pink
+        uColorTop: { value: new THREE.Color('#ffe600') }, 
+        uColorBottom: { value: new THREE.Color('#ff0077') } 
     }), []);
 
     return (
@@ -158,7 +146,6 @@ const RetroSun: React.FC = () => {
                     transparent
                     vertexShader={`
                         varying vec2 vUv;
-
                         void main() {
                             vUv = uv;
                             gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
@@ -169,25 +156,14 @@ const RetroSun: React.FC = () => {
                         uniform float uTime;
                         uniform vec3 uColorTop;
                         uniform vec3 uColorBottom;
-
                         void main() {
-                            // 1. Basic Vertical Gradient
                             vec3 color = mix(uColorBottom, uColorTop, vUv.y);
-                            
-                            // 2. Synthwave Scanlines
                             float stripeFreq = 40.0;
                             float stripeSpeed = 1.0;
                             float stripes = sin((vUv.y * stripeFreq) - (uTime * stripeSpeed));
-                            
-                            // Create sharp bands
                             float stripeMask = smoothstep(0.2, 0.3, stripes);
-                            
-                            // Fade scanlines out towards the top of the sun
                             float scanlineFade = smoothstep(0.7, 0.3, vUv.y); 
-                            
-                            // Apply dark bands (scanlines)
                             vec3 finalColor = mix(color, color * 0.1, (1.0 - stripeMask) * scanlineFade);
-
                             gl_FragColor = vec4(finalColor, 1.0);
                         }
                     `}
@@ -206,11 +182,7 @@ const MovingGrid: React.FC = () => {
         if (meshRef.current) {
              const activeSpeed = speed > 0 ? speed : 5;
              offsetRef.current += activeSpeed * delta;
-             
-             // Grid cell size = 400 (length) / 40 (segments) = 10 units
              const cellSize = 10;
-             
-             // Move mesh forward (+Z) to simulate travel, then snap back
              const zPos = -100 + (offsetRef.current % cellSize);
              meshRef.current.position.z = zPos;
         }

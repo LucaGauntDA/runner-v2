@@ -1,9 +1,7 @@
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
 */
-
 
 import React, { useRef, useEffect, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
@@ -115,10 +113,10 @@ export const Player: React.FC = () => {
           setLane(l => Math.max(l - 1, -maxLane));
       } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
           setLane(l => Math.min(l + 1, maxLane));
-      } else if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
+      } else if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W' || e.key === ' ') {
           e.preventDefault(); // Prevent page scroll
           triggerJump();
-      } else if (e.key === ' ' || e.key === 'Enter') {
+      } else if (e.key === 'Shift' || e.key === 'Enter') {
           e.preventDefault();
           activateImmortality();
       }
