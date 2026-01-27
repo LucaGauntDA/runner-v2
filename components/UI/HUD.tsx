@@ -60,7 +60,7 @@ const ShopScreen: React.FC = () => {
     return (
         <div className="absolute inset-0 bg-black/90 z-[100] text-white pointer-events-auto backdrop-blur-md overflow-y-auto">
              <div className="flex flex-col items-center justify-center min-h-full py-12 px-6">
-                 <h2 className="text-4xl lg:text-5xl font-black text-cyan-400 mb-2 font-cyber tracking-widest text-center drop-shadow-[0_0_10px_rgba(0,255,255,0.4)]">UPGRADE BAY</h2>
+                 <h2 className="text-4xl lg:text-5xl font-black text-cyan-400 mb-2 font-cyber tracking-widest text-center drop-shadow-[0_0_10px_rgba(0,255,255,0.4)]">UPGRADES</h2>
                  <div className="flex items-center text-yellow-400 mb-8 md:mb-12">
                      <span className="text-lg lg:text-xl mr-3 font-mono">AVAILABLE CREDITS:</span>
                      <span className="text-2xl lg:text-3xl font-bold">{score.toLocaleString()}</span>
@@ -93,7 +93,7 @@ const ShopScreen: React.FC = () => {
                     onClick={closeShop}
                     className="group flex items-center px-10 lg:px-14 py-4 lg:py-5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black text-xl lg:text-2xl rounded-xl hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,0,255,0.3)] hover:shadow-[0_0_40px_rgba(255,0,255,0.5)] active:scale-95"
                  >
-                     RESUME MISSION <Play className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" fill="white" />
+                     CONTINUE <Play className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" fill="white" />
                  </button>
              </div>
         </div>
@@ -139,11 +139,11 @@ export const HUD: React.FC = () => {
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/40 via-purple-500/40 to-pink-500/40 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                             <span className="relative z-10 tracking-widest flex items-center justify-center">
-                                INITIALIZE RUN <Play className="ml-3 w-6 h-6 lg:w-7 lg:h-7 fill-white" />
+                                START GAME <Play className="ml-3 w-6 h-6 lg:w-7 lg:h-7 fill-white" />
                             </span>
                         </button>
                         <p className="text-cyan-400/50 text-xs lg:text-sm font-mono mt-5 tracking-[0.2em] uppercase">
-                            [ SPACE / ARROWS / WASD / SWIPE ]
+                            [ just some random runner. Ignore me ]
                         </p>
                      </div>
                 </div>
@@ -192,10 +192,10 @@ export const HUD: React.FC = () => {
             <div className="flex flex-col items-center justify-center min-h-full py-12 px-6">
                 <Rocket className="w-20 h-20 lg:w-32 lg:h-32 text-yellow-400 mb-6 animate-bounce drop-shadow-[0_0_20px_rgba(255,215,0,0.8)]" />
                 <h1 className="text-4xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-500 to-pink-500 mb-4 drop-shadow-[0_0_30px_rgba(255,165,0,0.5)] font-cyber text-center leading-tight tracking-tighter uppercase">
-                    MISSION ACCOMPLISHED
+                    VICTORY
                 </h1>
                 <p className="text-cyan-300 text-lg md:text-3xl font-mono mb-12 tracking-[0.5em] text-center uppercase font-bold drop-shadow-[0_0_10px_rgba(0,255,255,0.5)]">
-                    Champion of the Void
+                    Champion
                 </p>
                 
                 <div className="grid grid-cols-1 gap-6 text-center mb-12 w-full max-w-2xl">
@@ -282,16 +282,16 @@ export const HUD: React.FC = () => {
 
         <div className="w-full flex justify-between items-end">
              <div className="flex flex-col">
-                  <span className="font-mono text-[10px] lg:text-xs text-purple-500 tracking-[0.4em] uppercase mb-1">MISSION LOG: STABLE</span>
+                  <span className="font-mono text-[10px] lg:text-xs text-purple-500 tracking-[0.4em] uppercase mb-1">STABLE</span>
                   <div className="flex items-center space-x-3 text-cyan-500 opacity-80">
                       <Zap className="w-5 h-5 lg:w-8 lg:h-8 animate-pulse" />
-                      <span className="font-mono text-lg lg:text-2xl font-bold tracking-widest uppercase">THRUSTERS {Math.round((speed / RUN_SPEED_BASE) * 100)}%</span>
+                      <span className="font-mono text-lg lg:text-2xl font-bold tracking-widest uppercase">PERFORMANCE {Math.round((speed / RUN_SPEED_BASE) * 100)}%</span>
                   </div>
              </div>
              
              <div className="hidden md:flex flex-col items-end text-white/40 font-mono text-[10px] lg:text-xs tracking-[0.2em]">
-                <div>OS: RUNNER_V2.0.4</div>
-                <div>GRID_STATUS: ENHANCED</div>
+                <div>RUNNER_V2.0.4</div>
+                <div>LUCA</div>
              </div>
         </div>
     </div>
