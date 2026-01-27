@@ -10,7 +10,7 @@ import { BlendFunction } from 'postprocessing';
 
 export const Effects = () => {
   return (
-    <EffectComposer disableNormalPass multisampling={0}>
+    <EffectComposer multisampling={0}>
       <Bloom 
         luminanceThreshold={0.75} 
         mipmapBlur 
