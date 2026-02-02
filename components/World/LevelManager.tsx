@@ -542,13 +542,13 @@ const GameEntity: React.FC<{ data: GameObject }> = React.memo(({ data }) => {
                 {data.type === ObjectType.SHOP_PORTAL && (
                     <group>
                          <mesh position={[0, 3, 0]} geometry={SHOP_FRAME_GEO} scale={[laneCount * LANE_WIDTH + 2, 1, 1]}>
-                             <meshStandardMaterial color="#111111" metalness={0.8} roughness={0.2} />
+                             <meshStandardMaterial color="#222222" metalness={0.8} roughness={0.2} />
                          </mesh>
                          <mesh position={[0, 2, 0]} geometry={SHOP_BACK_GEO} scale={[laneCount * LANE_WIDTH, 1, 1]}>
-                              <meshBasicMaterial color="#000000" />
+                              <meshBasicMaterial color="#050505" />
                          </mesh>
                          <mesh position={[0, 3, 0]} geometry={SHOP_OUTLINE_GEO} scale={[laneCount * LANE_WIDTH + 2.2, 1, 1]}>
-                             <meshBasicMaterial color="#00ffff" wireframe transparent opacity={0.3} />
+                             <meshBasicMaterial color="#00ffff" wireframe transparent opacity={0.6} />
                          </mesh>
                          <Center position={[0, 5, 0.6]}>
                              <Text3D font={FONT_URL} size={1.2} height={0.2}>
@@ -557,7 +557,7 @@ const GameEntity: React.FC<{ data: GameObject }> = React.memo(({ data }) => {
                              </Text3D>
                          </Center>
                          <mesh position={[0, 0.1, 0]} rotation={[-Math.PI/2, 0, 0]} geometry={SHOP_FLOOR_GEO} scale={[laneCount * LANE_WIDTH, 1, 1]}>
-                             <meshBasicMaterial color="#00ffff" transparent opacity={0.3} />
+                             <meshBasicMaterial color="#00ffff" transparent opacity={0.4} />
                          </mesh>
                     </group>
                 )}
@@ -570,6 +570,8 @@ const GameEntity: React.FC<{ data: GameObject }> = React.memo(({ data }) => {
                                  roughness={0.3} 
                                  metalness={0.8} 
                                  flatShading={true}
+                                 emissive="#ff0055"
+                                 emissiveIntensity={0.2}
                              />
                         </mesh>
                         <mesh scale={[1.02, 1.02, 1.02]} geometry={OBSTACLE_GLOW_GEO}>
@@ -577,11 +579,11 @@ const GameEntity: React.FC<{ data: GameObject }> = React.memo(({ data }) => {
                                  color={data.color} 
                                  wireframe 
                                  transparent 
-                                 opacity={0.3} 
+                                 opacity={0.8} 
                              />
                         </mesh>
                          <mesh position={[0, -OBSTACLE_HEIGHT/2 + 0.05, 0]} rotation={[-Math.PI/2,0,0]} geometry={OBSTACLE_RING_GEO}>
-                             <meshBasicMaterial color={data.color} transparent opacity={0.4} side={THREE.DoubleSide} />
+                             <meshBasicMaterial color={data.color} transparent opacity={0.6} side={THREE.DoubleSide} />
                          </mesh>
                     </group>
                 )}
@@ -589,10 +591,10 @@ const GameEntity: React.FC<{ data: GameObject }> = React.memo(({ data }) => {
                 {data.type === ObjectType.ALIEN && (
                     <group>
                         <mesh castShadow geometry={ALIEN_BODY_GEO}>
-                            <meshStandardMaterial color="#4400cc" metalness={0.8} roughness={0.2} />
+                            <meshStandardMaterial color="#4400cc" metalness={0.8} roughness={0.2} emissive="#3300aa" emissiveIntensity={0.3} />
                         </mesh>
                         <mesh position={[0, 0.2, 0]} geometry={ALIEN_DOME_GEO}>
-                            <meshStandardMaterial color="#00ff00" emissive="#00ff00" emissiveIntensity={0.5} transparent opacity={0.8} />
+                            <meshStandardMaterial color="#00ff00" emissive="#00ff00" emissiveIntensity={0.6} transparent opacity={0.9} />
                         </mesh>
                         <mesh position={[0.3, 0, 0.3]} geometry={ALIEN_EYE_GEO}>
                              <meshBasicMaterial color="#ff00ff" />

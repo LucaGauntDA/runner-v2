@@ -12,14 +12,15 @@ export const Effects = () => {
   return (
     <EffectComposer multisampling={0}>
       <Bloom 
-        luminanceThreshold={0.75} 
+        luminanceThreshold={0.6} 
         mipmapBlur 
-        intensity={1.0} 
+        intensity={1.2} 
         radius={0.6}
         levels={8}
       />
-      <Noise opacity={0.05} blendFunction={BlendFunction.OVERLAY} />
-      <Vignette eskil={false} offset={0.1} darkness={0.5} />
+      <Noise opacity={0.04} blendFunction={BlendFunction.OVERLAY} />
+      {/* Reduced darkness to make corners less oppressive */}
+      <Vignette eskil={false} offset={0.1} darkness={0.35} />
     </EffectComposer>
   );
 };

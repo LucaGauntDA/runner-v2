@@ -1,3 +1,4 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -21,7 +22,7 @@ const SHOP_ITEMS: ShopItem[] = [
     {
         id: 'MAX_LIFE',
         name: 'MAX LIFE UP',
-        description: 'Permanently adds a heart slot and heals you.',
+        description: 'Permanently adds a heart slot and fully restores health.',
         cost: 1500,
         icon: Activity
     },

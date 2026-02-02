@@ -72,10 +72,10 @@ const StarField: React.FC = () => {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.5}
+        size={0.6}
         color="#ffffff"
         transparent
-        opacity={0.8}
+        opacity={0.9}
         sizeAttenuation
       />
     </points>
@@ -99,7 +99,7 @@ const LaneGuides: React.FC = () => {
         <group position={[0, 0.02, 0]}>
             <mesh position={[0, -0.02, -20]} rotation={[-Math.PI / 2, 0, 0]}>
                 <planeGeometry args={[laneCount * LANE_WIDTH, 200]} />
-                <meshBasicMaterial color="#1a0b2e" transparent opacity={0.9} />
+                <meshBasicMaterial color="#2a1b3e" transparent opacity={0.8} />
             </mesh>
 
             {separators.map((x, i) => (
@@ -108,7 +108,7 @@ const LaneGuides: React.FC = () => {
                     <meshBasicMaterial 
                         color="#00ffff" 
                         transparent 
-                        opacity={0.4} 
+                        opacity={0.5} 
                     />
                 </mesh>
             ))}
@@ -132,7 +132,7 @@ const RetroSun: React.FC = () => {
 
     const uniforms = useMemo(() => ({
         uTime: { value: 0 },
-        uColorTop: { value: new THREE.Color('#ffe600') }, 
+        uColorTop: { value: new THREE.Color('#ffdd00') }, 
         uColorBottom: { value: new THREE.Color('#ff0077') } 
     }), []);
 
@@ -192,10 +192,10 @@ const MovingGrid: React.FC = () => {
         <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.2, -100]}>
             <planeGeometry args={[300, 400, 30, 40]} />
             <meshBasicMaterial 
-                color="#8800ff" 
+                color="#9933ff" 
                 wireframe 
                 transparent 
-                opacity={0.15} 
+                opacity={0.25} 
             />
         </mesh>
     );
@@ -204,12 +204,21 @@ const MovingGrid: React.FC = () => {
 export const Environment: React.FC = () => {
   return (
     <>
-      <color attach="background" args={['#050011']} />
-      <fog attach="fog" args={['#050011', 40, 160]} />
+      <color attach="background" args={['#08001a']} />
+      {/* Reduced fog density and pushed start distance back to make far objects clearer */}
+      <fog attach="fog" args={['#08001a', 60, 220]} />
       
-      <ambientLight intensity={0.2} color="#400080" />
-      <directionalLight position={[0, 20, -10]} intensity={1.5} color="#00ffff" />
-      <pointLight position={[0, 25, -150]} intensity={2} color="#ff00aa" distance={200} decay={2} />
+      {/* Brighter Ambient Light to lift shadows */}
+      <ambientLight intensity={0.6} color="#501090" />
+      
+      {/* Stronger Directional Light for better definition */}
+      <directionalLight position={[0, 20, -5]} intensity={3.0} color="#00ffff" />
+      
+      {/* Fill light from behind/side */}
+      <pointLight position={[20, 10, 0]} intensity={1.5} color="#ff00aa" distance={50} />
+      
+      {/* Distant light for the sun area */}
+      <pointLight position={[0, 25, -150]} intensity={4} color="#ff00aa" distance={300} decay={2} />
       
       <StarField />
       <MovingGrid />
