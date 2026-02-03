@@ -292,7 +292,7 @@ export const HUD: React.FC = () => {
              
              <div className="hidden md:flex flex-col items-end text-white/40 font-mono text-[10px] lg:text-xs tracking-[0.2em]">
                 <div>RUNNER_V2.0.4</div>
-                <div>LUCA</div>
+                <div>It works.</div>
              </div>
         </div>
     </div>
